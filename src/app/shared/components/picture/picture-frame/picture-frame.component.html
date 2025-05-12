@@ -1,0 +1,35 @@
+<ion-col size="12" size-md="6" size-lg="4" class="gallery-item">
+
+	<ion-card class="image-card">
+
+		<img 
+			[src]="picture.url" 
+			[alt]="picture.description"
+			class="gallery-image"
+		/>
+		
+		<ion-card-header class="image-info">
+
+			<ion-card-title class="image-title">
+
+				{{ picture.name }}
+
+			</ion-card-title>
+
+			<ion-card-subtitle class="image-date">
+
+				{{ picture.createdAt.toDate() | date:'mediumDate' }}
+
+			</ion-card-subtitle>
+
+		</ion-card-header>
+
+		<ion-badge class="image-badge" color="light">
+
+			<ion-icon name="heart-outline" class="like-icon"></ion-icon>
+
+		</ion-badge>
+
+	</ion-card>
+
+</ion-col>

@@ -1,0 +1,26 @@
+<app-loading></app-loading>
+
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+
+	<ion-grid class="gallery-container">
+
+		@for (picture of pictures; track picture.id) {
+
+			<app-picture-frame [picture] = "picture"></app-picture-frame>
+
+		}@empty{
+
+			<ion-row class="empty-state">
+
+				<ion-icon name="image-outline" class="empty-icon"></ion-icon>
+				<h2 class="empty-text">No pictures available</h2>
+
+			</ion-row>
+
+		}
+
+	</ion-grid>
+
+</ion-content>
