@@ -1,4 +1,5 @@
 .image-card {
+
 	position: relative;
 	border-radius: 12px;
 	overflow: hidden;
@@ -6,11 +7,15 @@
 	transition: box-shadow 0.3s ease;
 	
 	&:hover {
+
 		box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+
 	}
+
 }
 
 .gallery-image {
+
 	width: 100%;
 	height: 250px;
 	object-fit: cover;
@@ -18,11 +23,15 @@
 	transition: transform 0.3s ease;
 	
 	&:hover {
+
 		transform: scale(1.05);
+
 	}
+
 }
 
 .image-info {
+
 	position: absolute;
 	bottom: 0;
 	width: 100%;
@@ -30,18 +39,24 @@
 	color: white;
 	
 	.image-title {
+
 		font-size: 1.1em;
 		font-weight: 600;
 		margin-bottom: 4px;
+
 	}
 	
 	.image-date {
+
 		font-size: 0.9em;
 		opacity: 0.8;
+
 	}
+
 }
 
 .image-badge {
+
 	position: absolute;
 	top: 16px;
 	right: 16px;
@@ -51,22 +66,54 @@
 	padding: 6px 12px;
 	
 	.like-icon {
+
 		margin-right: 6px;
 		color: var(--ion-color-danger);
 		transition: fill 0.3s ease;
+
 	}
 	
 	&:hover .like-icon {
+
 		fill: var(--ion-color-danger);
+
 	}
+
+}
+
+.edit-button {
+
+	--ion-color-base: rgba(255, 255, 255, 0.9) !important;
+	--box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+	--transition: transform 0.2s ease;
+	
+	ion-icon {
+
+		color: var(--ion-color-dark);
+		font-size: 1.2em;
+
+	}
+
+	&:active {
+
+		transform: scale(0.9);
+
+	}
+
 }
 
 @media (max-width: 768px) {
+
 	.gallery-image {
+
 		height: 200px;
+
 	}
 	
 	.image-title {
+
 		font-size: 1em !important;
+
 	}
+
 }

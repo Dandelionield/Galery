@@ -1,0 +1,92 @@
+<app-loading></app-loading>
+
+<app-header title = "New Picture" [showBackButton] = "true"></app-header>
+
+<ion-content [fullscreen]="true" class="form-container">
+
+	<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+		<ion-grid>
+
+			<ion-row class="ion-justify-content-center">
+
+				<ion-col size="12" size-md="8">
+
+					<ion-card>
+
+						<ion-card-header>
+
+							<ion-card-title>Upload a picture</ion-card-title>
+
+						</ion-card-header>
+
+						<ion-card-content>
+
+							<div class="image-preview-container">
+
+								@if (imagePreview) {
+
+									<img [src]="imagePreview" alt="Preview" class="image-preview">
+
+								}@else{
+
+									<div class="image-placeholder">
+
+										<ion-icon name="image-outline" class="placeholder-icon"></ion-icon>
+
+									</div>
+
+								}
+								<ion-button expand="block" color="medium" class="upload-button" (click)="selectImage()">
+
+									<ion-icon slot="start" name="cloud-upload"></ion-icon>
+									Select Picture
+
+								</ion-button>
+
+							</div>
+
+							<ion-item>
+
+								<ion-input label="Picture Control" labelPlacement="floating" formControlName="name" [errorText]="getNameError()"></ion-input>
+
+							</ion-item>
+
+							@if (name?.invalid && (name?.dirty || name?.touched)) {
+
+								<ion-note color="danger" class="error-message">
+									{{ getNameError() }}
+								</ion-note>
+
+							}
+
+							<ion-item>
+
+								<ion-textarea label="Description" labelPlacement="floating" formControlName="description" rows="4" [errorText]="getDescriptionError()"></ion-textarea>
+							</ion-item>
+
+							@if (description?.invalid && (description?.dirty || description?.touched)) {
+
+								<ion-note color="danger" class="error-message">								
+									{{ getDescriptionError() }}
+								</ion-note>
+
+							}
+
+							<ion-button type="submit" expand="block" color="primary" [disabled]="!isFormValid()" class="submit-button">
+								Save
+							</ion-button>
+
+						</ion-card-content>
+
+					</ion-card>
+
+				</ion-col>
+
+			</ion-row>
+
+		</ion-grid>
+
+	</form>
+
+</ion-content>

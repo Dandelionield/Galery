@@ -1,3 +1,4 @@
+
 ion-toolbar {
 
 	--border-width: 0 0 1px 0;
@@ -29,5 +30,27 @@ ion-title {
 
 	font-weight: 600;
 	padding-left: 16px;
+
+}
+
+ion-button {
+
+	--color: #718096;
+	--padding-start: 8px;
+	--padding-end: 8px;
+	
+	ion-icon {
+
+		font-size: 1.4rem;
+		transition: color 0.2s;
+		color: #ff174d;
+
+	}
+
+	&:hover ion-icon {
+
+		color: #4299e1;
+
+	}
 
 }

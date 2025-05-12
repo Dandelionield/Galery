@@ -14,6 +14,16 @@ const routes: Routes = [
 		redirectTo: 'home',
 		pathMatch: 'full'
 
+	}, {
+
+		path: 'add',
+		loadChildren: () => import('./pages/picture/picture-insert-form/picture-insert-form.module').then( m => m.PictureInsertFormPageModule)
+
+	}, {
+
+		path: 'update/:id',
+		loadChildren: () => import('./pages/picture/picture-update-form/picture-update-form.module').then( m => m.PictureUpdateFormPageModule)
+
 	},
 
 ];

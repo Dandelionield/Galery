@@ -1,0 +1,53 @@
+<app-loading></app-loading>
+
+<app-header title = "Update Picture" [showBackButton] = "true"></app-header>
+
+<ion-content [fullscreen]="true">
+
+	@if (picture) {
+
+		<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+			<ion-grid>
+
+				<ion-row class="ion-justify-content-center">
+
+					<ion-col size="12" size-md="8">
+						
+						<app-picture-frame [picture]="picture"></app-picture-frame>
+
+						<ion-card>
+
+							<ion-card-content>
+
+								<ion-item>
+
+									<ion-input label="Name" formControlName="name" [errorText]="getNameError()"></ion-input>
+
+								</ion-item>
+
+								<ion-item>
+
+									<ion-textarea label="Descripción" formControlName="description" [errorText]="getDescriptionError()" rows="4"></ion-textarea>
+
+								</ion-item>
+
+								<ion-button type="submit" expand="block" color="primary" [disabled]="form.invalid">
+									Update
+								</ion-button>
+
+							</ion-card-content>
+
+						</ion-card>
+
+					</ion-col>
+
+				</ion-row>
+
+			</ion-grid>
+
+		</form>
+
+	}
+
+</ion-content>

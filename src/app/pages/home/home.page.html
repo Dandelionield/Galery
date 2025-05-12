@@ -8,7 +8,7 @@
 
 		@for (picture of pictures; track picture.id) {
 
-			<app-picture-frame [picture] = "picture"></app-picture-frame>
+			<app-picture-frame [picture] = "picture" (click) = "navigateToUpdate(picture.id)"></app-picture-frame>
 
 		}@empty{
 
@@ -22,5 +22,15 @@
 		}
 
 	</ion-grid>
+
+	<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+
+		<ion-fab-button (click) = "navigateToInsert()">
+
+			<ion-icon name="add"></ion-icon>
+
+		</ion-fab-button>
+
+	</ion-fab>
 
 </ion-content>

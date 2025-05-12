@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Picture } from '@core/services/picture/entity/picture.entity';
+import { Router } from '@angular/router';
 
 @Component({
 
@@ -12,7 +13,7 @@ import { Picture } from '@core/services/picture/entity/picture.entity';
 
 	@Input() public picture!: Picture;
 
-	public constructor() {}
+	public constructor(private router: Router) {}
 
 	public ngOnInit(): void {}
 
