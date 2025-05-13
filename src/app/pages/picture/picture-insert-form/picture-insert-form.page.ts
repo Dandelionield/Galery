@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraResultType } from '@capacitor/camera';
 import { LoadingService } from '@shared/services/loading/loading.service';
@@ -24,6 +25,7 @@ import { Timestamp } from '@angular/fire/firestore';
 
 	public constructor(
 
+		private router: Router,
 		private fb: FormBuilder,
 		private swalService: SwalService,
 		private loadingService: LoadingService,
@@ -101,15 +103,15 @@ import { Timestamp } from '@angular/fire/firestore';
 
 			this.loadingService.show();
 
-			const fileName = `${Date.now()}_${(this.selectedFile! as File).name}`;
-			const bucketFile = await this.bucketFileService.insert({
+			const fileName = `${Date.now()}.jpg`;
+			const url = await this.bucketFileService.insert({
 				name: fileName,
 				file: this.selectedFile!
-			});
+			}) as string;
 
 			const newPicture: Picture = {
 
-				url: bucketFile,
+				url: url,
 				name: this.form.value.name.trim(),
 				description: this.form.value.description.trim(),
 				createdAt: Timestamp.now()
@@ -119,6 +121,8 @@ import { Timestamp } from '@angular/fire/firestore';
 			await this.pictureService.insert(newPicture);
 
 			this.resetForm();
+
+			this.router.navigate(['/home']);
 
 		}catch (e: any){
 

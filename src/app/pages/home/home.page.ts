@@ -47,16 +47,6 @@ import { Picture } from '@core/services/picture/entity/picture.entity';
 
 		});
 
-		/*this.bucketFileService.findAll().subscribe({
-
-			next: (t) => {
-
-				console.log(t);
-
-			}, error: (e) => this.swalService.showException('Error', e.message)
-
-		});/**/
-
 	}
 
 	public navigateToInsert(): void {

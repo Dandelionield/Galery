@@ -47,7 +47,7 @@ import {
 
 		}catch(e: any){
 
-			throw new FirebaseError('400', e.message);
+			throw new FirebaseError('Error', e.message);
 
 		}
 
@@ -65,13 +65,13 @@ import {
 
 		}catch(e: any){
 
-			throw new FirebaseError('400', e.message);
+			throw new FirebaseError('Error', e.message);
 
 		}
 
 	}
 
-	public async insert(entity: Picture): Promise<string> {
+	public async insert(entity: Picture): Promise<string | undefined> {
 
 		try{
 
@@ -86,7 +86,8 @@ import {
 
 		}catch(e: any){
 
-			throw new FirebaseError('400', e.message);
+			throw new FirebaseError('Error', e.message);
+			return undefined;
 
 		}
 
@@ -102,7 +103,7 @@ import {
 
 		}catch (e: any){
 
-			throw new FirebaseError('400', e.message);
+			throw new FirebaseError('Error', e.message);
 			return false;
 
 		}
@@ -124,7 +125,7 @@ import {
 
 		}catch (e: any){
 
-			throw new FirebaseError('400', e.message);
+			throw new FirebaseError('Error', e.message);
 			return false;
 
 		}

@@ -63,7 +63,7 @@ import { map } from 'rxjs/operators';
 
 	}
 
-	public async insert(entity: BucketFile & { file: Blob }): Promise<string> {
+	public async insert(entity: BucketFile & { file: Blob }): Promise<string | undefined> {
 
 		try{
 
@@ -76,11 +76,12 @@ import { map } from 'rxjs/operators';
 
 			if (error) throw error;
 
-			return data.path;
+			return `https://dghhvdgxmqmhodneorow.supabase.co/storage/v1/object/public/galery//${entity.name}`;
 
 		}catch(e: any){
 
 			throw new StorageError(e.message);
+			return undefined;
 
 		}
 

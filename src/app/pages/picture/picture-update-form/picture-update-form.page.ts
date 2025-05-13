@@ -6,6 +6,7 @@ import { SwalService } from '@shared/services/swal/swal.service';
 import { PictureService } from '@core/services/picture/picture.service';
 import { Picture } from '@core/services/picture/entity/picture.entity';
 import { Timestamp } from '@angular/fire/firestore';
+import { SweetAlertResult } from 'sweetalert2';
 
 @Component({
 
@@ -83,7 +84,7 @@ import { Timestamp } from '@angular/fire/firestore';
 
 			if (!success){
 
-				this.swalService.showException('404', 'Unable to update');
+				this.swalService.showException('Error', 'Unable to update');
 
 			}else{
 
@@ -91,6 +92,48 @@ import { Timestamp } from '@angular/fire/firestore';
 
 			}
 			
+		} catch (e: any) {
+
+			this.swalService.showException('Error', e.message);
+
+		}finally{
+
+			this.loadingService.hide();
+
+		}
+
+	}
+
+	public async onDelete(): Promise<void>{
+
+		let shot: SweetAlertResult = await this.swalService.getConfirmation('Question', 'Are you sure you want to delete this picture?');
+
+		if (shot.isConfirmed){
+
+			await this.delete();
+
+		}
+
+	}
+
+	private async delete(): Promise<void>{
+
+		try {
+
+			this.loadingService.show();
+			
+			let success: boolean = await this.pictureService.delete(this.picture.id as string);
+
+			if (!success){
+
+				this.swalService.showException('Error', 'Unable to delete');
+
+			}else{
+
+				this.router.navigate(['/home']);
+
+			}
+
 		} catch (e: any) {
 
 			this.swalService.showException('Error', e.message);
@@ -126,7 +169,7 @@ import { Timestamp } from '@angular/fire/firestore';
 
 		}catch(e: any){
 
-			this.swalService.showException('404', e.message);
+			this.swalService.showException('Error', e.message);
 
 		}finally{
 

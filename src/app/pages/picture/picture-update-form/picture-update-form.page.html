@@ -32,9 +32,17 @@
 
 								</ion-item>
 
-								<ion-button type="submit" expand="block" color="primary" [disabled]="form.invalid">
-									Update
-								</ion-button>
+								<div class="button-group">
+
+									<ion-button type="submit" expand="block" color="primary" [disabled]="form.invalid">
+										Update
+									</ion-button>
+
+									<ion-button expand="block" color="danger" class="delete-button" (click) = "onDelete()">
+										Delete
+									</ion-button>
+
+								</div>
 
 							</ion-card-content>
 
